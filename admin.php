@@ -24,7 +24,7 @@
   	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
 		  $msg = "Image uploaded successfully";
 		  $sql = "INSERT INTO images (image, image_text) VALUES ('$target', '$image_text')";
-		  mysqli_query($db, $sql);
+          mysqli_query($db, $sql);
 
 		  
 
@@ -34,343 +34,128 @@
   	}
   }
   $result = mysqli_query($db, "SELECT * FROM images LIMIT 1");
-  $result1 = mysqli_query($db, "SELECT * FROM text_body LIMIT 1");
 ?>
 
+<?php
+ // Create database connection
 
 
+ // Initialize message variable
+ $msg = "";
 
-
-
-
-
-
+ // If upload button is clicked ...
+ if (isset($_POST['submittext'])) {
+     // Get image name
+     $learn=$_POST["learn"];
+     $teach=$_POST["teach"];
+     $travel=$_POST["travel"];
+         $sqlupdate = "UPDATE `text_body` SET `travel_experience`='$travel',`teaaching_experience`='$teach',`learning_experience`='$learn'";
+         
+         mysqli_query($db, $sqlupdate);
+         if ($db->query($sqlupdate) === TRUE) {
+            echo "<script>alert('Record updated successfully');</script>";
+        } else {
+            echo "<script>alert('Error, please try again!');</script>";
+        }
+        
+        $db->close();
+ }
+?>
 
 
 <!DOCTYPE html>
 <html>
     <head>
-
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
-  <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
-  <title>CodePen - Over The Top Form</title>
-  
-  
-  
-  <link rel='stylesheet prefetch' href='https://tympanus.net/Development/TextInputEffects/css/set2.css'>
-<link rel='stylesheet prefetch' href='https://tympanus.net/Development/TextInputEffects/css/set1.css'>
-<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Raleway:200,500,700,800'>
-<link rel='stylesheet prefetch' href='https://tympanus.net/Development/TextInputEffects/css/demo.css'>
-<link rel='stylesheet prefetch' href='https://tympanus.net/Development/TextInputEffects/css/normalize.css'>
-<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
-
         <title>Image Upload</title>
-			<!-- <link rel="stylesheet" type="text/css" href="css/project.css">    
-				  -->
-		
-				  <style>
-      html {
-  background: #FFA6A6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+
+        <style>
+            .body3{
+    background-image: url('https://78.media.tumblr.com/82efbe8c9a22f5ea0aa1faf5bf630c02/tumblr_ovd7v6M8b81wulsfyo1_500.gif');
+    height: 200px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-header {
-  top: 10px !important;
-  margin: 0 !important;
-  padding: 0 !important;
+#content{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 10%;
+    border-radius: 50px;
+
 }
 
-body {
-  background: transparent;
+#text_content{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 10%;
+    border-radius: 50px;
 }
 
-.container {
-  background: #FF3131;
-  width: 800px;
-  height: 300px;
-  border-radius: 10px;
-  box-shadow: 0px 7px 31px -2px rgba(0, 0, 0, 0.75);
-  overflow: visible;
-  position: relative;
+
+.header1{
+    font-size:45px;
+    text-align:center;
+    color:white;
+    
 }
 
-.container input {
-  background: #fff;
-}
 
-.input__label-content {
-  color: #fff;
-}
 
-.input {
-  z-index: 666;
-}
-.input:nth-child(2), .input:nth-child(3) {
-  opacity: 0;
-}
-.input:nth-child(3) {
-  top: -140px;
-}
-
-.fa-thumbs-up {
-  transform: scaleX(-1);
-  position: absolute;
-  right: -100%;
-  font-size: 3.5rem;
-  padding-top: 10px;
-  opacity: 0;
-}
-
-.input-1 {
-  background: #EC0505;
-}
-.input-1 .fa {
-  color: #EC0505;
-}
-.input-1 input {
-  color: #EC0505;
-}
-
-.input-2 {
-  background: #EC6E05;
-}
-.input-2 .fa {
-  color: #EC6E05;
-}
-.input-2 input {
-  color: #EC6E05;
-}
-
-.input-3 {
-  background: #04BC04;
-}
-.input-3 .fa {
-  color: #04BC04;
-}
-.input-3 input {
-  color: #04BC04;
-}
-
-.thanks {
-  font-size: 3rem;
-  position: relative;
-  left: -260px;
-  top: 170px;
-  color: #fff;
-  z-index: 420;
-  opacity: 0;
-}
-
-.fa-heart {
-  font-size: 3rem;
-  position: relative;
-  right: -550px;
-  top: 170px;
-  z-index: 200;
-  opacity: 0;
-  color: #fff;
-}
-
-</style>
-
- <script>
-  window.console = window.console || function(t) {};
-</script>
-
-  
-  
-  <script>
-  if (document.location.search.match(/type=embed/gi)) {
-    window.parent.postMessage("resize", "*");
-  }
-</script>
-
-		  
+        </style>
+            <!-- <link rel="stylesheet" type="text/css" href="css/project.css">              -->
 </head>
-<body>
+<body class= "body3">
+
+        <h3 class="header1">Does this look like an Admin page?</h3>
+        <hr>
+
 <div id="content">
 
-     <?php
-		 echo($msg);
-		 while ($row = mysqli_fetch_array($result)) {
-                 echo "<div id='img_div'>";
-      	        echo "<img src='".$row['image']."' >";
-      	        echo "<p>".$row['image_text']."</p>";
-                echo "</div>";
-             }
-        ?>
+    <?php
+		//  echo($msg);
+		//  while ($row = mysqli_fetch_array($result)) {
+        //          echo "<div id='img_div'>";
+      	//         echo "<img src='".$row['image']."' >";
+      	//         echo "<p>".$row['image_text']."</p>";
+        //         echo "</div>";
+         
+    ?>
   <form method="POST" action="" enctype="multipart/form-data">
   	        <input type="hidden" name="size" value="1000000">
   	        <div>
   	     <input id="image" type="file" name="image">
-        	</div>
-    	<div>
+            </div>
+            <div>
+            <button type="submit" name="upload">POST</button>
+            </div>
+            </form>
+
+</div>
+    <div id="text_content">
+    <form method= "POST" action="">
       <textarea 
       	id="text" 
       	cols="40" 
       	rows="4" 
-      	name="image_text" 
-      	placeholder="Say something about this image..."></textarea>
-  	</div>
-  	<div>
-  		<button type="submit" name="upload">POST</button>
-  	</div>
-  </form>
-</div>
-
-
-<body translate="no" >
-
-<header class="codrops-header">
-<h1>This Way In....</h1>
-
-</header>
-<span class="thanks">Thank you !</span>
-<i class="fa fa-heart"></i>
-
-<div class="container">
-<section class="content">
-  <span class="input input-1 input--jiro">
-				  <input class="input__field input__field--jiro" type="text" id="input-10">
-				  <label class="input__label input__label--jiro" for="input-10">
-					  <span class="input__label-content input__label-content--jiro">Your name goes here</span>
-  </label>
-  <i class="fa fa-thumbs-up"></i>
-  </span>
-  <span class="input input-2 input--jiro">
-				  <input class="input__field input__field--jiro" type="text" id="input-11">
-				  <label class="input__label input__label--jiro" for="input-11">
-					  <span class="input__label-content input__label-content--jiro">What about your age ?</span>
-  </label>
-  <i class="fa fa-thumbs-up"></i>
-  </span>
-  <span class="input input-3 input--jiro">
-				  <input class="input__field input__field--jiro" type="text" id="input-12">
-				  <label class="input__label input__label--jiro" for="input-12">
-					  <span class="input__label-content input__label-content--jiro">We also need your email</span>
-  </label>
-  <i class="fa fa-thumbs-up"></i>
-  </span>
-</section>
-</div>
-
-<script src="//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
-
-<script src='https://tympanus.net/Development/TextInputEffects/js/classie.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>
-
-
-
-  <script >
-	var $inputs = $('input');
-
-$('.input-1').on('change', function() {
-var tl = new TimelineLite();
-var $self = $(this);
-tl.to($self.find('.fa'), 0.4, {
-  right: '5px',
-  opacity: 1,
-  ease: Elastic.easeOut
-}).to($(this), 0.4, {
-  left: "-450px",
-  rotation: -220,
-  opacity: 0,
-  y: '-100',
-  ease: Power1.easeOut
-}).to($self.next(), 0.4, {
-  top: "-140px",
-  opacity: 1,
-  ease: Back.easeOut
-}).to($('.container'), 0.4, {
-  backgroundColor: '#FFA153',
-  ease: Power1.easeOut
-}, '-=0.4').to($('html'), 0.4, {
-  backgroundColor: '#FFCEA6',
-  ease: Power1.easeOut
-}, '-=0.4');
-
-setTimeout(function() {
-  $self.next().find('input').focus();
-}, 1200)
-
-})
-$('.input-2').on('change', function() {
-var tl = new TimelineLite();
-var $self = $(this);
-tl.to($self.find('.fa'), 0.4, {
-  right: '5px',
-   opacity: 1,
-  ease: Elastic.easeOut
-}).to($(this), 0.4, {
-  left: "450px",
-  rotation: 255,
-  opacity: 0,
-  y: "100",
-  ease: Power1.easeOut
-}).to($self.next(), 0.4, {
-  top: "-=140px",
-  opacity: 1,
-  ease: Back.easeOut
-}).to($('.container'), 0.4, {
-  backgroundColor: '#48DC48',
-  ease: Power1.easeOut
-}, '-=0.4').to($('html'), 0.4, {
-  backgroundColor: '#9DF39D',
-  ease: Power1.easeOut
-}, '-=0.4');
-setTimeout(function() {
-  $self.next().find('input').focus();
-}, 1200)
-})
-$('.input-3').on('change', function() {
-var tl = new TimelineLite();
-var $self = $(this);
-tl.to($self.find('.fa'), 0.4, {
-  right: '5px',
-   opacity: 1,
-  ease: Elastic.easeOut
-}).to($(this), 0.4, {
-  top: "-=450px",
-  rotation: 255,
-  opacity: 0,
-  y: "-100",
-  ease: Power1.easeOut
-}).to($('.container'), 0.4, {
-  backgroundColor: '#333333',
-  ease: Power1.easeOut
-}, '-=0.4').to($('html'), 0.4, {
-  backgroundColor: '#999999',
-  ease: Power1.easeOut
-}, '-=0.4').to($('.thanks'), 0.4, {
-  left: 200,
-  opacity: 1,
-  ease: Power4.easeOut
-}).to($('.fa-heart'), 0.4, {
-  right: -210,
-  opacity: 1,
-  ease: Power4.easeOut
-}, '-=0.4')
-});
-	//# sourceURL=pen.js
-  </script>
-
-
-
-
-
-
-</body>
-
-</html>
-
-
-
-
-
+          placeholder="Travel experience..." name="travel"></textarea><br>
+          <textarea 
+      	id="text" 
+      	cols="40" 
+      	rows="4" 
+          placeholder="Teaching experience..." name="teach"></textarea><br>
+          <textarea 
+      	id="text" 
+      	cols="40" 
+      	rows="4" 
+      	placeholder="Learning experience..." name="learn"></textarea><br>
+  		<button type="submit" name="submittext">POST</button>
+          </div>
+    
 </body>
 </html>
