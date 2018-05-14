@@ -1,0 +1,122 @@
+body{
+
+    max-width:100%;
+    height: auto;
+    margin: 0%;
+    background-color:teal;
+    background-image:url(https://mdn.mozillademos.org/files/11307/bubbles.png);
+    font-family: 'Tangerine', serif;
+    font-size:40px;
+   
+    
+}
+.body2{
+    background-color:rgb(236, 194, 6);
+}
+
+.para2 h3{
+
+  text-align: center;
+}
+
+
+.desc-h2{
+    letter-spacing : .1em;
+    font-weight: bolder;
+    text-align:center;
+    transition: all 1s ease-in-out;
+    font-family:'Pangolin', cursive;
+}
+.type-desc{
+    letter-spacing: 0.1em;
+    transition:all 1s cubic-bezier (0.075, 0.02, 0.165,1);
+}
+
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+.container2{
+    color: rgb(248, 197, 179);
+    text-align: center;
+}
+.row{
+    text-align: center;
+    padding: 70px 0px 0px 0px;
+}
+
+
+img {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 10%;
+    border-radius: 50px;
+}
+
+section{
+    width:100%;
+    position: relative;
+}
+
+.para2 h3{
+        font-family:'Pangolin', cursive;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 20px;
+        animation-name: favour;
+}
+@keyframes favour{
+    
+}
+
+.para3 span{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 40px;
+    text-align: right;
+    
+    
+}
+
+.para4 span{
+    font-family: 'Shadows Into Light', cursive;
+    text-align:left;
+   
+    
+}
+
+.para5 span{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 40px;
+    text-align: center;
+    
+}
+
+div.popover-body{
+    color: rgb(8, 8, 8);
+    font-family:'Caveat', cursive;
+
+}
+
+h3.popover-header{
+    font-family: 'Caveat', cursive;
+    color: rgb(7, 7, 6);
+}
+
+
+
+
+
+
+
+
+
+
+/* hr { 
+    display: block;
+    border-width: 5px;
+    border-color: rgb(170, 119, 57);
+} */
