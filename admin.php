@@ -1,6 +1,6 @@
 <?php
 //Login page protection
-if($_GET["username"]!="favour" && $_GET["password"]!="hart"){
+if($_GET["username"]!="melas" && $_GET["password"]!="evans"){
 header("Location: nextpage.php");
 }
 

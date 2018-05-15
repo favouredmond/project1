@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
   <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
-  <title>CodePen - Over The Top Form</title>
+  <title>mylogin</title>
   
   
   
@@ -252,8 +252,8 @@ $('.input-2').on('change', function() {
   password= document.getElementById("input-11").value;
   console.log(password);
   console.log(username);
-if(username=="favour" && password=="hart"){
-window.location.replace("admin.php?username=favour&password=hart");
+if(username=="melas" && password=="evans"){
+window.location.replace("admin.php?username=melas&password=evans");
 }
 else{
   alert("Incorrect login details");
