@@ -1,4 +1,9 @@
 <?php
+//Login page protection
+if($_GET["username"]!="favour" && $_GET["password"]!="hart"){
+header("Location: nextpage.php");
+}
+
   // Create database connection
   $db = mysqli_connect("localhost", "root", "chemistry1", "project1");
 
@@ -68,8 +73,8 @@
     <head>
         <title>Image Upload</title>
 
-        <style>
-            .body3{
+    <style>
+    .body3{
     background-image: url('https://78.media.tumblr.com/82efbe8c9a22f5ea0aa1faf5bf630c02/tumblr_ovd7v6M8b81wulsfyo1_500.gif');
     height: 200px; 
     background-attachment: fixed;
@@ -77,27 +82,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-#content{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
-    width: 10%;
-    border-radius: 50px;
-
-}
-
-#text_content{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
-    width: 10%;
-    border-radius: 50px;
-}
-
-
 .header1{
     font-size:45px;
     text-align:center;
@@ -107,7 +91,7 @@
 
 
 
-        </style>
+    </style>
             <!-- <link rel="stylesheet" type="text/css" href="css/project.css">              -->
 </head>
 <body class= "body3">
@@ -118,12 +102,13 @@
 <div id="content">
 
     <?php
-		//  echo($msg);
-		//  while ($row = mysqli_fetch_array($result)) {
-        //          echo "<div id='img_div'>";
-      	//         echo "<img src='".$row['image']."' >";
-      	//         echo "<p>".$row['image_text']."</p>";
-        //         echo "</div>";
+		 echo($msg);
+		 while ($row = mysqli_fetch_array($result)) {
+                 echo "<div id='img_div'>";
+      	        echo "<img src='".$row['image']."' >";
+      	        echo "<p>".$row['image_text']."</p>";
+                echo "</div>";
+         }
          
     ?>
   <form method="POST" action="" enctype="multipart/form-data">

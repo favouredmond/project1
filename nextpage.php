@@ -48,8 +48,9 @@ $rows=$results->fetch_assoc();
         </div>
          
          <!-- <hr> -->
-         <script src="bootstrap.bundle.min.js"></script>
          <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+         <script src="bootstrap.bundle.min.js"></script>
+
          <!-- <script src="js/popper.min.js"></script> -->
          
          <script src="vendors/typed/lib/typed.min.js"></script>
@@ -58,12 +59,12 @@ $rows=$results->fetch_assoc();
          
          <script>
             $(document).ready(function(){
-    $('[data-toggle="popover"]').popover();  
+                $('[data-toggle="popover"]').popover();  
 
-    $('.popover-dismiss').popover({
-  trigger: 'focus'
-}); 
-});
+                $('.popover-dismiss').popover({
+                    trigger: 'focus'
+                }); 
+            });
 </script>
 
 <script>
@@ -73,7 +74,7 @@ var options = {
         "am learning to build <span class=\"yellow\">responsive</span> website^1500",
         "could go into building <span class=\"yellow\">responsive</span> applications too ^1500",
         "always <span class=\"yellow\">find</span> answers to problems^1500",
-        " 'll tell you more if <span class=\"yellow\">you click</span> the words below^1500",
+        "'ll tell you more if <span class=\"yellow\">you click</span> the words below^1500",
         "should add  an emoji but I haven't figured it out... yet"
         
         
